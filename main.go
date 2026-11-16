@@ -151,7 +151,7 @@ func run() error {
 	log.Printf("Serviço de Avaliação (Go) rodando na porta %s", port)
 	server := &http.Server{
 		Addr:              ":" + port,
-		Handler:           mux,
+		Handler:           logRequests(mux),
 		ReadHeaderTimeout: 5 * time.Second,
 	}
 	serverErrors := make(chan error, 1)
